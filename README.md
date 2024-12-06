@@ -1,7 +1,7 @@
 All images should use **Alpine** as the base image. For building bioinformatics-related images, use **Mamba** instead of Conda. 
 Do not set a mirror source, and the image can be built in stages to aim for the smallest Dockerfile.
 
-### 1.Based on the above requirements, we have provided the minimal bioinformatics environment **biobase**.
+1.Based on the above requirements, we have provided the minimal bioinformatics environment **biobase**.
 
     FROM alpine:latest
     RUN apk update && \
@@ -13,7 +13,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         wget -q -O /opt/Miniforge3-Linux-x86_64.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh && \
         bash /opt/Miniforge3-Linux-x86_64.sh -f -b -p /opt/conda/ && rm -rf /opt/Miniforge3-Linux-x86_64.sh /var/cache/apk/*
 
-### 2.The Docker image file for metagenomic data analysis is as follows.
+2.The Docker image file for metagenomic data analysis is as follows.
 
     FROM alpine:latest
     RUN apk add --no-cache bash && mkdir -p /lib64/ /ref/ /script/ /raw_data/ /outdir/ && \
@@ -34,7 +34,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         /opt/conda/bin/conda clean -a -y && /opt/conda/bin/mamba clean -a -y
     ENV LD_LIBRARY_PATH=/lib/:/lib64/:$LD_LIBRARY_PATH
 
-### 3.The Docker image for COVID-19 and other microbiome detection based on amplicon methods is as follows.This is a good example of building the image in stages, but an additional step is required to copy a jvarkit.jar file into the image.   
+3.The Docker image for COVID-19 and other microbiome detection based on amplicon methods is as follows.This is a good example of building the image in stages, but an additional step is required to copy a jvarkit.jar file into the image.   
 
     FROM alpine AS nextclade
     # glibc+conda+nextclade
