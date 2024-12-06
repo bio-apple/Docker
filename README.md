@@ -60,7 +60,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         bowtie2 bbmap fastp seqtk samtools bedtools bcftools bwa prinseq cutadapt drep
     RUN /opt/conda/bin/pip3 install seaborn matplotlib numpy pysam pandas
 
-#### The commonly used Docker analysis commands are as follows.
+#### 4.The commonly used Docker analysis commands are as follows.
 
 停止所有容器
 
