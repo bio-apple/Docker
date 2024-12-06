@@ -55,7 +55,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
 ### 3.The Docker image for COVID-19 and other microbiome detection based on amplicon methods is as follows.This is a good example of building the image in stages, but an additional step is required to copy a jvarkit.jar file into the image.   
 
     FROM alpine AS nextclade
-    # glibc+conda+nextclade v3.8.2
+    # glibc+conda+nextclade
     RUN apk update && \
         apk add --no-cache bash openjdk21 git && mkdir -p /lib64/ /ref/ /script/ /raw_data/ /outdir/ && \
         wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
