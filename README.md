@@ -1,4 +1,7 @@
-All images should use **Alpine** as the base image. For building bioinformatics-related images, use **Mamba** instead of Conda. 
+All images should use **Alpine** as the base image. 
+
+For building bioinformatics-related images, use **Mamba** instead of Conda. 
+
 Do not set a mirror source, and the image can be built in stages to aim for the smallest Dockerfile.
 
 #### 1.Based on the above requirements, we have provided the minimal bioinformatics environment biobase.
