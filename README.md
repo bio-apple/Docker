@@ -62,7 +62,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
 
 **The commonly used Docker analysis commands are as follows.**
 
-*停止所有容器*
+停止所有容器
 
     docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
     
