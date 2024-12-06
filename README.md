@@ -1,21 +1,3 @@
-## The commonly used Docker analysis commands are as follows
-
-### 停止所有容器
-
-    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
-    
-### 删除所有容器
-
-    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
-
-### 镜像保存与加载
-
-    docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
-    docker load --input my_ubuntu_v3.tar
-    
-### 镜像上传docker hub
-    docker tag biobase fanyucai1/
-
 All images should use **Alpine** as the base image. For building bioinformatics-related images, use **Mamba** instead of Conda. 
 Do not set a mirror source, and the image can be built in stages to aim for the smallest Dockerfile.
 
@@ -77,3 +59,22 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
     RUN /opt/conda/bin/mamba install --channel conda-forge --channel bioconda --channel defaults ivar=1.3 trimmomatic  \
         bowtie2 bbmap fastp seqtk samtools bedtools bcftools bwa prinseq cutadapt drep
     RUN /opt/conda/bin/pip3 install seaborn matplotlib numpy pysam pandas
+
+**The commonly used Docker analysis commands are as follows.**
+
+*停止所有容器*
+
+    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
+    
+*删除所有容器*
+
+    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
+
+*镜像保存与加载*
+
+    docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
+    docker load --input my_ubuntu_v3.tar
+    
+*镜像上传docker hub*
+
+    docker tag biobase fanyucai1/
