@@ -1,7 +1,7 @@
 All images should use **Alpine** as the base image. For building bioinformatics-related images, use **Mamba** instead of Conda. 
 Do not set a mirror source, and the image can be built in stages to aim for the smallest Dockerfile.
 
-#### 1.Based on the above requirements, we have provided the minimal bioinformatics environment **biobase**.
+#### 1.Based on the above requirements, we have provided the minimal bioinformatics environment biobase.
 
     FROM alpine:latest
     RUN apk update && \
@@ -60,7 +60,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         bowtie2 bbmap fastp seqtk samtools bedtools bcftools bwa prinseq cutadapt drep
     RUN /opt/conda/bin/pip3 install seaborn matplotlib numpy pysam pandas
 
-**The commonly used Docker analysis commands are as follows.**
+#### The commonly used Docker analysis commands are as follows.
 
 停止所有容器
 
