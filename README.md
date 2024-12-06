@@ -66,15 +66,15 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
 
     docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
     
-*删除所有容器*
+删除所有容器
 
     docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
 
-*镜像保存与加载*
+镜像保存与加载
 
     docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
     docker load --input my_ubuntu_v3.tar
     
-*镜像上传docker hub*
+镜像上传docker hub
 
     docker tag biobase fanyucai1/
