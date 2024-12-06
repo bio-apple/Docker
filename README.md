@@ -4,7 +4,24 @@ For building bioinformatics-related images, use **Mamba** instead of Conda.
 
 Do not set a mirror source, and the image can be built in stages to aim for the smallest Dockerfile.
 
-#### 1.Based on the above requirements, we have provided the minimal bioinformatics environment biobase.
+#   1.The commonly used Docker analysis commands are as follows.
+
+Stop all Docker containers
+
+    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
+    
+delete all containers
+
+    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
+
+save and load images
+
+    docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
+    docker load --input my_ubuntu_v3.tar
+
+#   2.Several important practical use cases of the images are as follows.
+
+**minimal bioinformatics environment**
 
     FROM alpine:latest
     RUN apk update && \
@@ -16,7 +33,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         wget -q -O /opt/Miniforge3-Linux-x86_64.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh && \
         bash /opt/Miniforge3-Linux-x86_64.sh -f -b -p /opt/conda/ && rm -rf /opt/Miniforge3-Linux-x86_64.sh /var/cache/apk/*
 
-#### 2.The Docker image file for metagenomic data analysis is as follows.
+**metagenomic data analysis**
 
     FROM alpine:latest
     RUN apk add --no-cache bash && mkdir -p /lib64/ /ref/ /script/ /raw_data/ /outdir/ && \
@@ -37,7 +54,7 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         /opt/conda/bin/conda clean -a -y && /opt/conda/bin/mamba clean -a -y
     ENV LD_LIBRARY_PATH=/lib/:/lib64/:$LD_LIBRARY_PATH
 
-#### 3.The Docker image for COVID-19 and other microbiome detection based on amplicon methods is as follows.This is a good example of building the image in stages, but an additional step is required to copy a jvarkit.jar file into the image.   
+**COVID-19** and other microbiome detection based on amplicon methods is as follows. This is a good example of building the image in stages.
 
     FROM alpine AS nextclade
     # glibc+conda+nextclade
@@ -63,21 +80,4 @@ Do not set a mirror source, and the image can be built in stages to aim for the 
         bowtie2 bbmap fastp seqtk samtools bedtools bcftools bwa prinseq cutadapt drep
     RUN /opt/conda/bin/pip3 install seaborn matplotlib numpy pysam pandas
 
-#### 4.The commonly used Docker analysis commands are as follows.
 
-停止所有容器
-
-    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
-    
-删除所有容器
-
-    docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
-
-镜像保存与加载
-
-    docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
-    docker load --input my_ubuntu_v3.tar
-    
-镜像上传docker hub
-
-    docker tag biobase fanyucai1/
