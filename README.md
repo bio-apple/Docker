@@ -14,6 +14,14 @@ delete all containers
 
     docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
 
+disable Cache with **--no-cache**
+
+    docker build --no-cache -t my_image .
+
+clean Up Build Cache
+    
+    docker builder prune -f
+
 save and load images
 
     docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
