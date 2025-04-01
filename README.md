@@ -90,3 +90,24 @@ save and load images
     RUN /opt/conda/bin/pip3 install seaborn matplotlib numpy pysam pandas
 
 
+# 3.Error resolution
+
+## 3-1:ERROR: failed to solve: DeadlineExceeded: DeadlineExceeded: DeadlineExceeded:
+*add the following to /etc/docker/daemon.json* https://blog.csdn.net/weixin_41463944/article/details/135348288
+
+    {
+        "features": {
+            "buildkit": false
+        }
+    }
+
+*add the mirror link to /etc/docker/daemon.json* https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea
+
+     {
+        "registry-mirrors": [
+            "https://docker-0.unsee.tech"
+        ]
+    }
+For Mac users, the **daemon.json** link is：
+
+    ~/.docker/daemon.json
