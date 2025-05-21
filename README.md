@@ -101,6 +101,8 @@ save and load images
         }
     }
 
+Docker Mirror Configuration Reference for Chinese Users：https://github.com/dongyubin/DockerHub
+
 *add the mirror link to /etc/docker/daemon.json* https://www.coderjia.cn/archives/dba3f94c-a021-468a-8ac6-e840f85867ea
 
      {
