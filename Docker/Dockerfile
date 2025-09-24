@@ -14,16 +14,15 @@ FROM nextclade AS pangolin
 RUN git clone https://github.com/cov-lineages/pangolin.git && cd pangolin/ &&  \
     /opt/conda/bin/mamba env create -f environment.yml --name pangolin &&  \
     /opt/conda/envs/pangolin/bin/pip install . &&  rm -rf /opt/pangolin/ && \
-    /opt/conda/bin/conda clean -a -y \
-
+    /opt/conda/bin/conda clean -a -y
 #version SnpEff 5.1d
 FROM pangolin AS snpeff
-COPY snpEff_latest_core.zip /opt/
+COPY Docker/snpEff_latest_core.zip /opt/
 RUN mkdir -p /software/ && cd /software/ && mv /opt/snpEff_latest_core.zip /software/  && \
     unzip snpEff_latest_core.zip && rm /software/snpEff_latest_core.zip && mkdir -p /software/snpEff/data/ && \
     rm -rf /software/snpEff/snpEff.config
-COPY snpEff.config /software/snpEff/
-COPY virus.gbk.tar.gz /software/snpEff/data
-COPY build.sh /opt/
+COPY Docker/snpEff.config /software/snpEff/
+COPY Docker/virus.gbk.tar.gz /software/snpEff/data
+COPY Docker/build.sh /opt/
 RUN cd /software/snpEff/data && tar xzvf virus.gbk.tar.gz && rm -rf virus.gbk.tar.gz && sh /opt/build.sh
 ENV PATH=/opt/conda/envs/pangolin/bin:$PATH
