@@ -41,4 +41,4 @@ jobs:
           file: Docker/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: fanyucai1/covid:latest
+          tags: fanyucai1/covlineages/pangolin:latest
