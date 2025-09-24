@@ -26,4 +26,3 @@ COPY virus.gbk.tar.gz /software/snpEff/data
 COPY build.sh /opt/
 RUN cd /software/snpEff/data && tar xzvf virus.gbk.tar.gz && rm -rf virus.gbk.tar.gz && sh /opt/build.sh
 ENV PATH=/opt/conda/envs/pangolin/bin:$PATH
-
