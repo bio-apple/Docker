@@ -15,7 +15,6 @@ RUN git clone https://github.com/cov-lineages/pangolin.git && cd pangolin/ &&  \
     /opt/conda/bin/mamba env create -f environment.yml --name pangolin &&  \
     /opt/conda/envs/pangolin/bin/pip install . &&  rm -rf /opt/pangolin/ && \
     /opt/conda/bin/conda clean -a -y
-
 #version SnpEff 5.1d
 FROM pangolin AS snpeff
 COPY Docker/snpEff_latest_core.zip /opt/
